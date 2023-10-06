@@ -1,2 +1,6 @@
+*.lock
+*.nix
 .envrc
-flake.nix
+.ipynb_checkpoints
+_build
+data/*
