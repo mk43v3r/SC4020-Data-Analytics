@@ -8,7 +8,14 @@ REPO_NAME = "SC4020-Data-Analytics"
 DATA_DIR = "./data/"
 DOWNLOAD_DICT = {
     "t48k.txt": "https://cs.joensuu.fi/sipu/datasets/t4.8k.txt",
-    "nested.zip": "https://cs.joensuu.fi/sipu/datasets/nested.zip"
+    "nested.zip": "https://cs.joensuu.fi/sipu/datasets/nested.zip",
+    "worms.zip": "http://cs.uef.fi/sipu/datasets/worms.zip",
+    "r15.txt": "https://cs.joensuu.fi/sipu/datasets/R15.txt",
+    "jain.txt": "https://cs.joensuu.fi/sipu/datasets/jain.txt",
+    "pathbased.txt": "https://cs.joensuu.fi/sipu/datasets/pathbased.txt",
+    "Compound.txt": "https://cs.joensuu.fi/sipu/datasets/Compound.txt",
+    "unbalance2.txt": "https://cs.joensuu.fi/sipu/datasets/unbalance2.txt",
+    "skewed.txt": "https://cs.joensuu.fi/sipu/datasets/skewed.txt"
 }
 
 if (os.path.basename(os.getcwd()) != REPO_NAME):
