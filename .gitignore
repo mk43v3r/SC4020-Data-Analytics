@@ -1,2 +1,4 @@
+_build
 .envrc
-flake.nix
+*.nix
+*.lock
