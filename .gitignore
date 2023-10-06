@@ -1,4 +1,6 @@
-_build
-.envrc
-*.nix
 *.lock
+*.nix
+.envrc
+.ipynb_checkpoints
+_build
+data/*
