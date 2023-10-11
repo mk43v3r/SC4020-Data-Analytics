@@ -41,6 +41,7 @@ def generate_experiment1a_blobs():
 
     return blob_list
 
+
 # Experiment 1B
 # Vary these factors: # of samples, # of clusters, density of clusters
 def generate_experiment1b_blobs(seed, sample_sizes, cluster_counts, n):
@@ -75,6 +76,7 @@ def generate_experiment1b_blobs(seed, sample_sizes, cluster_counts, n):
     
     return ss_blob_dict, cc_blob_dict
 
+
 # Plot multiple plots from multiple blobs
 def plot_blob_data(blob_list):
     dim_dict = {
@@ -104,4 +106,22 @@ def plot_blob_data(blob_list):
 
         axs[a][b].scatter(x=xs, y=ys, c=labels)
         
+    plt.show()
+
+
+# Returns normalized arr (by column)
+def z_scale_np_array(arr):
+    copied_arr = arr.copy()
+    z_scale_col = lambda c: (c-np.mean(c))/np.std(c)
+    return np.apply_along_axis(z_scale_col, axis=0, arr=copied_arr)
+
+
+def plot_without_noise(xs, ys, cs, **kwargs):
+    # array without noise
+    xs, ys, cs = zip(*filter(
+        lambda e: e[2] != -1,
+        zip(xs, ys, cs)
+    ))
+    plt.scatter(xs, ys, c=cs, **kwargs)
+
     plt.show()
