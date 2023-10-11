@@ -1,5 +1,7 @@
+from cdbw import CDbw
 from collections import defaultdict
 from itertools import product
+from sklearn.cluster import HDBSCAN
 from sklearn.datasets import make_blobs
 
 import matplotlib.pyplot as plt
@@ -122,6 +124,21 @@ def plot_without_noise(xs, ys, cs, **kwargs):
         lambda e: e[2] != -1,
         zip(xs, ys, cs)
     ))
+
     plt.scatter(xs, ys, c=cs, **kwargs)
 
     plt.show()
+
+# HDB tuning will be based on min_cluster_size, min_samples
+def hdb_tuning_with_cdbw(arr, arr_scaled, min_cluster_sizes, min_samples):
+    xs, ys = zip(*arr)
+    pred_w_score = list()
+    
+    for mcs, ms in product(min_cluster_sizes, min_samples):
+        hdb = HDBSCAN(min_cluster_size=mcs, min_samples=ms)
+        arr_predictions = hdb.fit_predict(arr_scaled)
+        cdbw_score = CDbw(arr, arr_predictions)
+        pred_w_score.append((cdbw_score, arr_predictions, mcs, ms))
+
+    return max(pred_w_score, key = lambda x: x[0])
+        
